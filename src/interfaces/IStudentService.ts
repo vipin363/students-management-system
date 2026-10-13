@@ -1,16 +1,18 @@
 
-import type { Student } from "../models/Student.js";
+import type {
+  CreateStudentRequest,
+  UpdateStudentRequest,
+  StudentResponse,
+} from "./StudentDTO.js";
 
 export interface IStudentService {
-    addStudent(
-        id: number,
-        name: string,
-        email: string,
-        age: number
-    ): void;
+  addStudent(data: CreateStudentRequest): StudentResponse;
 
-    getStudentById(id: number): Student | undefined;
-    getAllStudents(): Student[];
-    updateStudent(student: Student): boolean;
-    deleteStudent(id: number): boolean;
+  getStudentById(id: number): StudentResponse | undefined;
+
+  getAllStudents(): StudentResponse[];
+
+  updateStudent(data: UpdateStudentRequest): StudentResponse;
+
+  deleteStudent(id: number): boolean;
 }

@@ -1,18 +1,14 @@
 
-export class Student {
+import { User } from "./User.js";
+
+export class Student extends User {
     constructor(
-        public readonly id: number,
-        private _name: string,
-        private _email: string,
+        id: number,
+        name: string,
+        email: string,
         private _age: number
-    ) {}
-
-    get name(): string {
-        return this._name;
-    }
-
-    get email(): string {
-        return this._email;
+    ) {
+        super(id, name, email);
     }
 
     get age(): number {
@@ -24,8 +20,16 @@ export class Student {
         email: string,
         age: number
     ): void {
-        this._name = name;
-        this._email = email;
+        this.updateProfile(name, email);
+
         this._age = age;
+    }
+
+    getRole(): string {
+        return "Student";
+    }
+
+    getPermissions(): string[] {
+        return ["view-own-profile", "update-own-profile"];
     }
 }

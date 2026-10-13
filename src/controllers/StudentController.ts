@@ -1,34 +1,33 @@
 
-import { Student } from "../models/Student.js";
 import type { IStudentService } from "../interfaces/IStudentService.js";
+import type {
+  UpdateStudentRequest,
+  StudentResponse,
+  CreateStudentRequest,
+} from "../interfaces/StudentDTO.js";
 
 export class StudentController {
-    constructor(
-        private readonly studentService: IStudentService ) {}
+  constructor(
+    private readonly studentService: IStudentService
+  ) {}
 
-    addStudent(
-        id: number,
-        name: string,
-        email: string,
-        age: number
-    ): void {
-        this.studentService.addStudent(id, name, email, age);
-        console.log("Student added successfully!");
-    }
+  addStudent(data: CreateStudentRequest): StudentResponse {
+    return this.studentService.addStudent(data);
+  }
 
-    getAllStudents(): Student[] {
-        return this.studentService.getAllStudents();
-    }
+  getAllStudents(): StudentResponse[] {
+    return this.studentService.getAllStudents();
+  }
 
-    getStudentById(id: number): Student | undefined {
-        return this.studentService.getStudentById(id);
-    }
+  getStudentById(id: number): StudentResponse | undefined {
+    return this.studentService.getStudentById(id);
+  }
 
-    updateStudent(student: Student): boolean {
-        return this.studentService.updateStudent(student);
-    }
+  updateStudent(data: UpdateStudentRequest): StudentResponse {
+    return this.studentService.updateStudent(data);
+  }
 
-    deleteStudent(id: number): boolean {
-        return this.studentService.deleteStudent(id);
-    }
+  deleteStudent(id: number): boolean {
+    return this.studentService.deleteStudent(id);
+  }
 }

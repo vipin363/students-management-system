@@ -7,12 +7,17 @@ export class StudentRepository implements IStudentRepository {
 
     add(student: Student): void {
         this.students.push(student);
-        console.log(this.students)
     }
 
     findById(id: number): Student | undefined {
         return this.students.find(student => student.id === id);
     }
+
+     findByEmail(email: string): Student | undefined {
+     return this.students.find(
+        student => student.email.toLowerCase() === email.toLowerCase()
+    );
+}
 
     findAll(): Student[] {
         return [...this.students];
