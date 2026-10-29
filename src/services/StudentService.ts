@@ -14,7 +14,6 @@ export class StudentService implements IStudentService {
         private readonly studentRepository: IStudentRepository
     ) {}
 
-   
 
 addStudent(data: CreateStudentRequest): StudentResponse {
   StudentValidator.validate(data);
